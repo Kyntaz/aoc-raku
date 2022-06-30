@@ -1,7 +1,7 @@
 my $input = "input.txt".IO.slurp;
 say "Part 1: ", $input.indices("(").elems - $input.indices(")").elems;
 
-for $input.comb {
+for $input.comb -> $c {
     state $i = 0;
     state $y = 0;
 
@@ -10,7 +10,7 @@ for $input.comb {
         last;
     }
 
-    $y++ if $^x eq "(";
-    $y-- if $^x eq ")";
+    $y++ if $c eq "(";
+    $y-- if $c eq ")";
     $i++;
 }
